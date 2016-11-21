@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>VideoFrameGrabberWeb</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+  	<servlet-name>ValidateVideoDurationServlet</servlet-name>
+  	<servlet-class>com.vfgw.servlet.ValidateVideoDurationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ValidateVideoDurationServlet</servlet-name>
+  	<url-pattern>/validate.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>SetTimePointServlet</servlet-name>
+  	<servlet-class>com.vfgw.servlet.SetTimePointServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SetTimePointServlet</servlet-name>
+  	<url-pattern>/setTimePoint.do</url-pattern>
+  </servlet-mapping>
+</web-app>
