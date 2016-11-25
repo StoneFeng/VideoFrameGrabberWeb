@@ -1,8 +1,5 @@
 package com.vfgw.servlet;
 
-import it.sauronsoftware.jave.Encoder;
-import it.sauronsoftware.jave.EncoderException;
-
 import java.io.File;
 import java.io.IOException;
 
@@ -10,6 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.vfgw.jave.Encoder;
+import com.vfgw.jave.EncoderException;
 
 public class SetTimePointServlet extends HttpServlet {
 
@@ -25,9 +25,7 @@ public class SetTimePointServlet extends HttpServlet {
 		Long duration = (Long) req.getSession().getAttribute("duration");
 		String filePath = (String) req.getSession().getAttribute("filePath");
 		String timePoint = req.getParameter("timePoint");
-		System.out.println("SetTimePointServlet duration: "+duration);
-		System.out.println("SetTimePointServlet timePoint: "+timePoint);
-		System.out.println("SetTimePointServlet filePath: "+filePath);
+		timePoint = "".equals(timePoint) ? "1" : timePoint;
 		float floatTimePoint = Float.parseFloat(timePoint);
 		if (floatTimePoint > duration) {
 			floatTimePoint = duration;

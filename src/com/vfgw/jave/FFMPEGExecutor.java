@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package it.sauronsoftware.jave;
+package com.vfgw.jave;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,6 +38,7 @@ class FFMPEGExecutor {
 	/**
 	 * Arguments for the executable.
 	 */
+	@SuppressWarnings("rawtypes")
 	private ArrayList args = new ArrayList();
 
 	/**
@@ -82,6 +83,7 @@ class FFMPEGExecutor {
 	 * @param arg
 	 *            The argument.
 	 */
+	@SuppressWarnings("unchecked")
 	public void addArgument(String arg) {
 		args.add(arg);
 	}

@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package it.sauronsoftware.jave;
+package com.vfgw.jave;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -36,6 +36,7 @@ class RBufferedReader extends BufferedReader {
 	/**
 	 * Re-inserted lines buffer.
 	 */
+	@SuppressWarnings("rawtypes")
 	private ArrayList lines = new ArrayList();
 
 	/**
@@ -66,6 +67,7 @@ class RBufferedReader extends BufferedReader {
 	 * @param line
 	 *            The line.
 	 */
+	@SuppressWarnings("unchecked")
 	public void reinsertLine(String line) {
 		lines.add(0, line);
 	}

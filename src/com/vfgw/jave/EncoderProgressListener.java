@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package it.sauronsoftware.jave;
+package com.vfgw.jave;
 
 /**
  * Encoding progress listener interface. Instances of implementing classes could

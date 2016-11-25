@@ -16,13 +16,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package it.sauronsoftware.jave;
+package com.vfgw.jave;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.StringTokenizer;
@@ -133,6 +132,7 @@ public class Encoder {
 	 * @throws EncoderException
 	 *             If a problem occurs calling the underlying ffmpeg executable.
 	 */
+	@SuppressWarnings({ "rawtypes", "resource", "unchecked" })
 	public String[] getAudioDecoders() throws EncoderException {
 		ArrayList res = new ArrayList();
 		FFMPEGExecutor ffmpeg = locator.createExecutor();
@@ -140,8 +140,8 @@ public class Encoder {
 		try {
 			ffmpeg.execute();
 			RBufferedReader reader = null;
-			reader = new RBufferedReader(new InputStreamReader(ffmpeg
-					.getInputStream()));
+			reader = new RBufferedReader(new InputStreamReader(
+					ffmpeg.getInputStream()));
 			String line;
 			boolean evaluate = false;
 			while ((line = reader.readLine()) != null) {
@@ -187,6 +187,7 @@ public class Encoder {
 	 * @throws EncoderException
 	 *             If a problem occurs calling the underlying ffmpeg executable.
 	 */
+	@SuppressWarnings({ "rawtypes", "resource", "unchecked" })
 	public String[] getAudioEncoders() throws EncoderException {
 		ArrayList res = new ArrayList();
 		FFMPEGExecutor ffmpeg = locator.createExecutor();
@@ -194,8 +195,8 @@ public class Encoder {
 		try {
 			ffmpeg.execute();
 			RBufferedReader reader = null;
-			reader = new RBufferedReader(new InputStreamReader(ffmpeg
-					.getInputStream()));
+			reader = new RBufferedReader(new InputStreamReader(
+					ffmpeg.getInputStream()));
 			String line;
 			boolean evaluate = false;
 			while ((line = reader.readLine()) != null) {
@@ -241,6 +242,7 @@ public class Encoder {
 	 * @throws EncoderException
 	 *             If a problem occurs calling the underlying ffmpeg executable.
 	 */
+	@SuppressWarnings({ "rawtypes", "resource", "unchecked" })
 	public String[] getVideoDecoders() throws EncoderException {
 		ArrayList res = new ArrayList();
 		FFMPEGExecutor ffmpeg = locator.createExecutor();
@@ -248,8 +250,8 @@ public class Encoder {
 		try {
 			ffmpeg.execute();
 			RBufferedReader reader = null;
-			reader = new RBufferedReader(new InputStreamReader(ffmpeg
-					.getInputStream()));
+			reader = new RBufferedReader(new InputStreamReader(
+					ffmpeg.getInputStream()));
 			String line;
 			boolean evaluate = false;
 			while ((line = reader.readLine()) != null) {
@@ -295,6 +297,7 @@ public class Encoder {
 	 * @throws EncoderException
 	 *             If a problem occurs calling the underlying ffmpeg executable.
 	 */
+	@SuppressWarnings({ "resource", "rawtypes", "unchecked" })
 	public String[] getVideoEncoders() throws EncoderException {
 		ArrayList res = new ArrayList();
 		FFMPEGExecutor ffmpeg = locator.createExecutor();
@@ -302,8 +305,8 @@ public class Encoder {
 		try {
 			ffmpeg.execute();
 			RBufferedReader reader = null;
-			reader = new RBufferedReader(new InputStreamReader(ffmpeg
-					.getInputStream()));
+			reader = new RBufferedReader(new InputStreamReader(
+					ffmpeg.getInputStream()));
 			String line;
 			boolean evaluate = false;
 			while ((line = reader.readLine()) != null) {
@@ -351,6 +354,7 @@ public class Encoder {
 	 * @throws EncoderException
 	 *             If a problem occurs calling the underlying ffmpeg executable.
 	 */
+	@SuppressWarnings({ "rawtypes", "resource", "unchecked" })
 	public String[] getSupportedEncodingFormats() throws EncoderException {
 		ArrayList res = new ArrayList();
 		FFMPEGExecutor ffmpeg = locator.createExecutor();
@@ -358,8 +362,8 @@ public class Encoder {
 		try {
 			ffmpeg.execute();
 			RBufferedReader reader = null;
-			reader = new RBufferedReader(new InputStreamReader(ffmpeg
-					.getInputStream()));
+			reader = new RBufferedReader(new InputStreamReader(
+					ffmpeg.getInputStream()));
 			String line;
 			boolean evaluate = false;
 			while ((line = reader.readLine()) != null) {
@@ -410,6 +414,7 @@ public class Encoder {
 	 * @throws EncoderException
 	 *             If a problem occurs calling the underlying ffmpeg executable.
 	 */
+	@SuppressWarnings({ "rawtypes", "resource", "unchecked" })
 	public String[] getSupportedDecodingFormats() throws EncoderException {
 		ArrayList res = new ArrayList();
 		FFMPEGExecutor ffmpeg = locator.createExecutor();
@@ -417,8 +422,8 @@ public class Encoder {
 		try {
 			ffmpeg.execute();
 			RBufferedReader reader = null;
-			reader = new RBufferedReader(new InputStreamReader(ffmpeg
-					.getInputStream()));
+			reader = new RBufferedReader(new InputStreamReader(
+					ffmpeg.getInputStream()));
 			String line;
 			boolean evaluate = false;
 			while ((line = reader.readLine()) != null) {
@@ -484,8 +489,8 @@ public class Encoder {
 		}
 		try {
 			RBufferedReader reader = null;
-			reader = new RBufferedReader(new InputStreamReader(ffmpeg
-					.getErrorStream()));
+			reader = new RBufferedReader(new InputStreamReader(
+					ffmpeg.getErrorStream()));
 			return parseMultimediaInfo(source, reader);
 		} finally {
 			ffmpeg.destroy();
@@ -674,6 +679,7 @@ public class Encoder {
 	 * @return A hashtable with the value reported in the line, or null if the
 	 *         given line can not be parsed.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private Hashtable parseProgressInfoLine(String line) {
 		Hashtable table = null;
 		Matcher m = PROGRESS_INFO_PATTERN.matcher(line);
@@ -739,6 +745,7 @@ public class Encoder {
 	 * @throws EncoderException
 	 *             If a problems occurs during the encoding process.
 	 */
+	@SuppressWarnings("rawtypes")
 	public void encode(File source, File target, EncodingAttributes attributes,
 			EncoderProgressListener listener) throws IllegalArgumentException,
 			InputFormatException, EncoderException {
@@ -837,8 +844,8 @@ public class Encoder {
 			long duration;
 			long progress = 0;
 			RBufferedReader reader = null;
-			reader = new RBufferedReader(new InputStreamReader(ffmpeg
-					.getErrorStream()));
+			reader = new RBufferedReader(new InputStreamReader(
+					ffmpeg.getErrorStream()));
 			MultimediaInfo info = parseMultimediaInfo(source, reader);
 			if (durationAttribute != null) {
 				duration = (long) Math
@@ -935,11 +942,13 @@ public class Encoder {
 		}
 	}
 
-	public void getImage(File src,File desc,float ss) throws EncoderException, FileNotFoundException{
-		if(!src.exists()){
+	@SuppressWarnings("resource")
+	public void getImage(File src, File desc, float ss)
+			throws EncoderException, FileNotFoundException {
+		if (!src.exists()) {
 			throw new FileNotFoundException();
 		}
-		desc=desc.getAbsoluteFile();
+		desc = desc.getAbsoluteFile();
 		desc.getParentFile().mkdirs();
 		FFMPEGExecutor ffmpeg = locator.createExecutor();
 		ffmpeg.addArgument("-i");
@@ -948,17 +957,17 @@ public class Encoder {
 		ffmpeg.addArgument("-f");
 		ffmpeg.addArgument("image2");
 		ffmpeg.addArgument("-ss");
-		ffmpeg.addArgument(String.valueOf((int)ss));
+		ffmpeg.addArgument(String.valueOf((int) ss));
 		ffmpeg.addArgument("-t");
 		ffmpeg.addArgument("0.001");
 		ffmpeg.addArgument(desc.getAbsolutePath());
 		try {
 			ffmpeg.execute();
 			RBufferedReader reader = null;
-			reader = new RBufferedReader(new InputStreamReader(ffmpeg
-					.getErrorStream()));
-			String line=null;
-			while((line=reader.readLine())!=null){
+			reader = new RBufferedReader(new InputStreamReader(
+					ffmpeg.getErrorStream()));
+			String line = null;
+			while ((line = reader.readLine()) != null) {
 				System.out.println(line);
 			}
 		} catch (IOException e) {
@@ -967,11 +976,13 @@ public class Encoder {
 			ffmpeg.destroy();
 		}
 	}
-	
-	public static void main(String[] args){
-		Encoder encoder=new Encoder();
+
+	public static void main(String[] args) {
+		Encoder encoder = new Encoder();
 		try {
-			encoder.getImage(new File("E:/j2eeapp/agolf/WebRoot/video/aaaa.mpg"), new File("c:/a.jpg"), 0.1f);
+			encoder.getImage(
+					new File("E:/j2eeapp/agolf/WebRoot/video/aaaa.mpg"),
+					new File("c:/a.jpg"), 0.1f);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (EncoderException e) {
